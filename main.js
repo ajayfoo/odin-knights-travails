@@ -55,8 +55,6 @@ const getPath = (vertex, arr, start) => {
   while (!isSameVertex(currentVertex, start)) {
     path.push(currentVertex);
     currentVertex = getParent(currentVertex, arr);
-    console.log("vertex:");
-    console.log(currentVertex);
   }
   path.push(start);
   return path.reverse().map((ele) => ele.move);
@@ -83,7 +81,12 @@ const getShortestPath = (start, goal) => {
       queue.enqueue(ele);
     });
   }
-  console.log(getPath(res, visited, startVertex));
+  return getPath(res, visited, startVertex);
 };
 
-getShortestPath([0, 0], [3, 3]);
+const test = () => {
+  console.log(getShortestPath([0, 0], [3, 3]));
+  console.log(getShortestPath([3, 3], [0, 0]));
+};
+
+test();
