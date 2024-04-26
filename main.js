@@ -59,7 +59,7 @@ const getPath = (vertex, arr, start) => {
   path.push(start);
   return path.reverse().map((ele) => ele.move);
 };
-const getShortestPath = (start, goal) => {
+const knightMoves = (start, goal) => {
   const adjacencyMatrix = createAdjacencyMatrix();
   const queue = createQueue();
   const visited = [];
@@ -74,7 +74,7 @@ const getShortestPath = (start, goal) => {
       res = vertex;
       break;
     }
-    if (visited.some((value) => isSameVertex(value, vertex, true))) continue;
+    if (visited.some((value) => isSameVertex(value, vertex))) continue;
     visited.push(vertex);
     const [row, col] = vertex.move;
     adjacencyMatrix[row][col].forEach((ele) => {
@@ -85,8 +85,10 @@ const getShortestPath = (start, goal) => {
 };
 
 const test = () => {
-  console.log(getShortestPath([0, 0], [3, 3]));
-  console.log(getShortestPath([3, 3], [0, 0]));
+  console.log(knightMoves([0, 0], [3, 3]));
+  console.log(knightMoves([3, 3], [0, 0]));
+  console.log(knightMoves([3, 3], [4, 3]));
+  console.log(knightMoves([0, 0], [7, 7]));
 };
 
 test();
