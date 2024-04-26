@@ -63,7 +63,7 @@ const knightMoves = (start, goal) => {
   const adjacencyMatrix = createAdjacencyMatrix();
   const queue = createQueue();
   const visited = [];
-  let res = null;
+  let result = null;
   const startVertex = createVertex([-1, -1], start);
   const goalVertex = createVertex([], goal);
 
@@ -71,7 +71,7 @@ const knightMoves = (start, goal) => {
   while (!queue.isEmpty()) {
     const vertex = queue.dequeue();
     if (isSameVertex(vertex, goalVertex)) {
-      res = vertex;
+      result = vertex;
       break;
     }
     if (visited.some((value) => isSameVertex(value, vertex))) continue;
@@ -81,7 +81,7 @@ const knightMoves = (start, goal) => {
       queue.enqueue(ele);
     });
   }
-  return getPath(res, visited, startVertex);
+  return result === null ? [] : getPath(result, visited, startVertex);
 };
 
 const test = () => {
